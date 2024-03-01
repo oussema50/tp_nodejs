@@ -3,10 +3,12 @@ const userRoutes = require('./route/userRoutes');
 const postRoutes = require('./route/postRoutes');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser')
 const app = express();
 PORT = process.env.PORT || 9000;
 dotenv.config();
 app.use(express.json());
+app.use(cookieParser());
 app.use('/user', userRoutes);
 app.use('/post', postRoutes);
 

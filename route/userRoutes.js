@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 //user register
 router.post('/register',async(req,res)=>{
-    const {userName,password} = req.body;
+    const {userName,password} = req.body
     try{
         const user = await User.findOne({userName});
         if(user){
@@ -13,6 +13,7 @@ router.post('/register',async(req,res)=>{
                 errorMessage:'username is already exist',
             });
         }
+
         const newUser = new User()
         newUser.userName = userName;
         newUser.password = password;
