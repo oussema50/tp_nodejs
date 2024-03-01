@@ -1,15 +1,15 @@
-// app.js
 const express = require('express');
-const routes = require('./route/routes');
-const routes_post = require('./route/post_routes');
+const userRoutes = require('./route/userRoutes');
+const postRoutes = require('./route/postRoutes');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const app = express();
 PORT = process.env.PORT || 9000;
 dotenv.config();
 app.use(express.json());
-app.use('/auth', routes);
-app.use('/post', routes_post);
+app.use('/user', userRoutes);
+app.use('/post', postRoutes);
+
 mongoose.connect(process.env.MONGODB_URI).then(()=>
   {
     app.listen(PORT, () => {
@@ -18,4 +18,3 @@ mongoose.connect(process.env.MONGODB_URI).then(()=>
     console.log('connect to mongdb');
   }
 ).catch((err)=>consotl.log(err))
-
